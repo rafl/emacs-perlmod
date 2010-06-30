@@ -3,11 +3,17 @@
 ;;; Commentary:
 ;;
 
+;;; Code:
+
 (require 'perldoc)
 
 (defvar perlmod-perl-buffer "")
 
 (defun perlmod-open (module)
+  "Visit a perl module.
+This starts a perl process loading MODULE to figure out the file
+that contains the module, and calls `find-file' on the resulting
+filename."
   (let* ((default-directory "/")
          (proc (start-process
                 "perlmod" nil "perl" (concat "-m" module) "-e"
@@ -27,6 +33,9 @@
             (setq perlmod-perl-buffer "")))))
 
 (defun perlmod (&optional module re-cache)
+  "Open a perl MODULE.
+If RE-CACHE, which defaults to `current-prefix-arg', is non-nil,
+an update of the cache for module names is forced."
   (interactive (list nil current-prefix-arg))
   (when (or re-cache (not perldoc-all-completions-alist))
     (message "Building completion list of all perl modules...")
