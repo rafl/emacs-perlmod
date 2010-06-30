@@ -1,5 +1,14 @@
 ;;; perlmod.el --- Open the source code of an installed perl module
 
+;; This software is Copyright (c) 2010 by Florian Ragwitz.
+;;
+;; This is free software, licensed under:
+;;   The GNU General Public License, Version 2, June 1991
+
+;; Author: Florian Ragwitz <rafl@debian.org>
+;; Version: 0.0
+;; Keywords: perl
+
 ;;; Commentary:
 ;;
 
@@ -32,6 +41,7 @@ filename."
               (message "Module not found."))
             (setq perlmod-perl-buffer "")))))
 
+;;;###autoload
 (defun perlmod (&optional module re-cache)
   "Open a perl MODULE.
 If RE-CACHE, which defaults to `current-prefix-arg', is non-nil,
