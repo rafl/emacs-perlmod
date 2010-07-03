@@ -25,10 +25,12 @@ that contains the module, and calls `find-file' on the resulting
 filename."
   (let* ((default-directory "/")
          (proc (start-process
-                "perlmod" nil "perl" (concat "-m" module) "-e"
+                "perlmod" nil
+                "perl" (concat "-m" module) "-e"
                 (concat "my $mod = $ARGV[0]; $mod =~ s{::}{/}g;"
                         "$mod .= q{.pm}; print $INC{$mod}")
                 module)))
+    (make-local-variable 'perlmod-perl-buffer)
     (set-process-filter
      proc (lambda (proc str)
             (setq perlmod-perl-buffer (concat perlmod-perl-buffer str))))
