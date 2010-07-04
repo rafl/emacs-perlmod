@@ -6,7 +6,7 @@
 ;;   The GNU General Public License, Version 2, June 1991
 
 ;; Author: Florian Ragwitz <rafl@debian.org>
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: perl
 
 ;;; Commentary:
