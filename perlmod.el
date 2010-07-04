@@ -49,7 +49,7 @@ filename."
 If RE-CACHE, which defaults to `current-prefix-arg', is non-nil,
 an update of the cache for module names is forced."
   (interactive (list nil current-prefix-arg))
-  (when (or re-cache (not perldoc-all-completions-alist))
+  (when (or re-cache (not perldoc-modules-alist))
     (message "Building completion list of all perl modules...")
     (perldoc-modules-alist t))
   (unless (stringp module)
