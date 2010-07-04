@@ -38,7 +38,7 @@ filename."
      proc (lambda (proc event)
             (let ((output (plist-get (process-plist proc) :output)))
               (if (and
-                   (string-equal event "finished\n")
+                   (eq (process-status proc) 'exit)
                    (string-bytes output))
                   (find-file output)
                 (message "Module not found.")))))))
